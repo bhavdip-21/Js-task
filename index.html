@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <style type="text/tailwindcss">
+    @layer components {
+      .label {
+        @apply text-base md:text-lg font-semibold;
+      }
+      .input-field {
+        @apply p-2 border border-gray-300 w-full md:w-96 outline-none rounded-2xl;
+      }
+      .btn-primary {
+        @apply bg-blue-600 text-white px-4 py-2 border border-gray-300 rounded-2xl hover:bg-blue-700 transition duration-200;
+      }
+      .link {
+        @apply bg-blue-600 text-white px-4 py-2 border border-gray-300 rounded-2xl hover:bg-blue-700 transition duration-200;
+      }
+    }
+  </style>
+  <body>
+    <header class="sticky top-0 bg-white">
+      <nav class="flex justify-center gap-10 pt-4 py-2 px-4">
+        <a href="#" class="link" id="form-link">Form</a>
+        <a href="#" class="link" id="data-link">Data Table</a>
+      </nav>
+    </header>
+    <section class="flex justify-center px-4 mt-8" id="form-section">
+      <form
+        id="form"
+        class="w-full md:w-fit flex flex-col gap-2 py-4 md:py-8 px-4 md:px-10 border border-gray-200 rounded-2xl bg-gray-50 shadow-xl"
+      >
+        <label class="label" for="name"> Name </label>
+        <input type="text" name="name" id="name" class="input-field" />
+        <label class="label" for="email"> Email </label>
+        <input type="email" name="email" id="email" class="input-field" />
+        <label class="label" for="password"> Password </label>
+        <input type="text" name="password" id="password" class="input-field" />
+        <label class="label" for="confirm_password"> Confirm Password </label>
+        <input
+          type="text"
+          name="confirm_password"
+          id="confirm-password"
+          class="input-field"
+        />
+        <button type="submit" class="btn-primary mt-2" id="submit">
+          Submit
+        </button>
+      </form>
+    </section>
+    <section id="data-section" class="flex justify-center mt-8 px-4 hidden">
+      <div
+        class="w-full md:w-2xl flex flex-col gap-4 border p-4 border-gray-300 bg-gray-100 rounded-2xl"
+      >
+        <div class="flex gap-4">
+          <input
+            type="text"
+            class="input-field flex-1"
+            placeholder="search by name"
+            id="search_data"
+          />
+          <div class="relative">
+            <button id="filter">
+              <img src="./MaterialSymbolsFilterAlt.svg" alt="filter image" />
+            </button>
+            <select
+              name="filter"
+              id="filter_value"
+              class="hidden absolute top-5 right-5 bg-gray-100 p-2 border border-gray-300 rounded-2xl"
+            >
+              <option value="all" selected>All</option>
+              <option value="Fitness">Fitness</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Home & Kitchen">Home</option>
+              <option value="Office Supplies">Office</option>
+              <option value="Personal Care">Personal</option>
+            </select>
+          </div>
+        </div>
+        <div
+          class="overflow-x-scroll border p-4 border-gray-300 bg-gray-100 rounded-2xl shadow-xl"
+        >
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border border-gray-300 px-4 py-2">Id</th>
+                <th class="border border-gray-300 px-4 py-2">
+                  <select id="Name">
+                    <option value="name" selected>Name</option>
+                    <option value="asc">Name(Ascending)</option>
+                    <option value="des">Name(Descending)</option>
+                  </select>
+                </th>
+                <th class="border border-gray-300 px-4 py-2">
+                  <select id="price">
+                    <option value="price" selected>Price</option>
+                    <option value="asc">Price(high-low)</option>
+                    <option value="des">Price(low-high)</option>
+                  </select>
+                </th>
+                <th class="border border-gray-300 px-4 py-2">category</th>
+              </tr>
+            </thead>
+            <tbody id="table-data"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <script src="./index.js" defer></script>
+  </body>
+</html>
